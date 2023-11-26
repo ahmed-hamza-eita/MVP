@@ -1,23 +1,21 @@
 package com.hamza.mvp.presenter
 
-import com.hamza.mvp.models.FakeApiService
-import com.hamza.mvp.models.FakeDatabase
 import com.hamza.mvp.ui.IMainView
+import com.hamza.mvp.ui.MainRepository
 
 class MainPresenter {
-    private val api = FakeApiService()
-    private val database = FakeDatabase()
 
+    private val repository = MainRepository()
     lateinit var view: IMainView
 
     fun fetchWisdom() {
-        val result = api.getRandomWisdom()
+        val result = repository.fetchWisdom()
         view.onFetchWisdom(result)
     }
 
 
     fun getUserInfo() {
-        val result = database.getCurrentUser()
+        val result = repository.getUserInfo()
         view.onUSerInfo(result)
     }
 }
